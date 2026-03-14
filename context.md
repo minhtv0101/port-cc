@@ -11,25 +11,25 @@ This repo exists for one job only:
 
 ## Source Of Truth
 
-- `~/.claude/skills/`
-- `~/.claude/workflows/`
-- `~/.claude/CLAUDE.md`
+- `$HOME/.claude/skills/`
+- `$HOME/.claude/workflows/`
+- `$HOME/.claude/CLAUDE.md`
 
 ## Target Model
 
 Codex:
 
-- `~/.codex/skills/*`
-- `~/.codex/workflows/*`
-- `~/.codex/AGENTS.md`
+- `$HOME/.codex/skills/*`
+- `$HOME/.codex/workflows/*`
+- `$HOME/.codex/AGENTS.md`
 
 Gemini:
 
-- `~/.gemini/antigravity/skills/*`
-- `~/.gemini/antigravity/global_workflows/*`
-- `~/.gemini/GEMINI.md`
+- `$HOME/.gemini/antigravity/skills/*`
+- `$HOME/.gemini/antigravity/global_workflows/*`
+- `$HOME/.gemini/GEMINI.md`
 
-Legacy `~/.antigravity` is not a target anymore.
+Legacy `$HOME/.antigravity` is not a target anymore.
 
 ## Script Contract
 
@@ -41,7 +41,7 @@ Legacy `~/.antigravity` is not a target anymore.
 - updates file contents in place
 - skips vendored `node_modules`
 - normalizes invalid `SKILL.md`
-- rewrites prompt file workflow paths using `${HOME}`, not hardcoded absolute paths
+- rewrites prompt file workflow paths using `$HOME`, not hardcoded absolute paths
 
 ## Prompt File Rules
 

@@ -8,18 +8,18 @@ Main file: [`port-claudekit.sh`](./port-claudekit.sh)
 
 One run syncs these sources:
 
-- `~/.claude/skills/*`
-- `~/.claude/workflows/*`
-- `~/.claude/CLAUDE.md`
+- `$HOME/.claude/skills/*`
+- `$HOME/.claude/workflows/*`
+- `$HOME/.claude/CLAUDE.md`
 
 Into these targets:
 
-- `~/.codex/skills/*`
-- `~/.codex/workflows/*`
-- `~/.codex/AGENTS.md`
-- `~/.gemini/antigravity/skills/*`
-- `~/.gemini/antigravity/global_workflows/*`
-- `~/.gemini/GEMINI.md`
+- `$HOME/.codex/skills/*`
+- `$HOME/.codex/workflows/*`
+- `$HOME/.codex/AGENTS.md`
+- `$HOME/.gemini/antigravity/skills/*`
+- `$HOME/.gemini/antigravity/global_workflows/*`
+- `$HOME/.gemini/GEMINI.md`
 
 ## Behavior
 
@@ -28,9 +28,9 @@ Into these targets:
 - Existing destination-only directories are left alone.
 - `node_modules` inside source skills are skipped.
 - Invalid source `SKILL.md` files are normalized with valid YAML frontmatter.
-- `AGENTS.md` and `GEMINI.md` are derived from `~/.claude/CLAUDE.md`.
+- `AGENTS.md` and `GEMINI.md` are derived from `$HOME/.claude/CLAUDE.md`.
 - Prompt files keep the original Claude structure as much as possible.
-- Workflow references are rewritten to use `${HOME}` paths, not hardcoded user paths.
+- Workflow references are rewritten to use `$HOME` paths, not hardcoded user paths.
 - Unsupported Claude-only sections are omitted:
   - `## Hook Response Protocol`
   - `## Python Scripts (Skills)`
@@ -46,9 +46,9 @@ Managed generated files include:
 - `bash`
 - standard Unix tools available on macOS/Linux: `find`, `awk`, `grep`, `cmp`, `cp`, `mktemp`
 - source files must exist:
-  - `~/.claude/skills`
-  - `~/.claude/workflows`
-  - `~/.claude/CLAUDE.md`
+  - `$HOME/.claude/skills`
+  - `$HOME/.claude/workflows`
+  - `$HOME/.claude/CLAUDE.md`
 
 ## Usage
 
