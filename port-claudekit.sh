@@ -28,12 +28,12 @@ SRC_CLAUDE="$HOME/.claude/CLAUDE.md"
 
 CODEX_SKILLS="$HOME/.codex/skills"
 CODEX_WORKFLOWS="$HOME/.codex/workflows"
-CODEX_WORKFLOWS_REF='${HOME}/.codex/workflows'
+CODEX_WORKFLOWS_REF='$HOME/.codex/workflows'
 CODEX_PROMPT="$HOME/.codex/AGENTS.md"
 GEMINI_ROOT="$HOME/.gemini"
 GEMINI_SKILLS="$HOME/.gemini/antigravity/skills"
 GEMINI_WORKFLOWS="$HOME/.gemini/antigravity/global_workflows"
-GEMINI_WORKFLOWS_REF='${HOME}/.gemini/antigravity/global_workflows'
+GEMINI_WORKFLOWS_REF='$HOME/.gemini/antigravity/global_workflows'
 GEMINI_PROMPT="$HOME/.gemini/GEMINI.md"
 
 TMP_FILES=()
@@ -460,10 +460,15 @@ build_global_prompt() {
             line = "This file provides guidance to " product_name " when working with code in this repository."
           }
           gsub(/\$HOME\/\.claude\/rules\/primary-workflow\.md/, workflows_ref "/primary-workflow.md", line)
+          gsub(/\$\{HOME\}\/\.claude\/rules\/primary-workflow\.md/, workflows_ref "/primary-workflow.md", line)
           gsub(/\$HOME\/\.claude\/rules\/development-rules\.md/, workflows_ref "/development-rules.md", line)
+          gsub(/\$\{HOME\}\/\.claude\/rules\/development-rules\.md/, workflows_ref "/development-rules.md", line)
           gsub(/\$HOME\/\.claude\/rules\/orchestration-protocol\.md/, workflows_ref "/orchestration-protocol.md", line)
+          gsub(/\$\{HOME\}\/\.claude\/rules\/orchestration-protocol\.md/, workflows_ref "/orchestration-protocol.md", line)
           gsub(/\$HOME\/\.claude\/rules\/documentation-management\.md/, workflows_ref "/documentation-management.md", line)
+          gsub(/\$\{HOME\}\/\.claude\/rules\/documentation-management\.md/, workflows_ref "/documentation-management.md", line)
           gsub(/\$HOME\/\.claude\/rules\/\*/, workflows_ref "/*", line)
+          gsub(/\$\{HOME\}\/\.claude\/rules\/\*/, workflows_ref "/*", line)
           gsub(/\.\/CLAUDE\.md/, "./" title, line)
           return line
         }
