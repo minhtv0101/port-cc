@@ -1,8 +1,11 @@
 # port-cc
 
-Portable Bash porter for syncing ClaudeKit globals into Codex and Gemini.
+Portable Bash porter for syncing ClaudeKit globals into Codex and Gemini, plus building a portable bundle for another machine.
 
-Main file: [`port-claudekit.sh`](./port-claudekit.sh)
+Main files:
+
+- [`port-claudekit.sh`](./port-claudekit.sh)
+- [`port-claudekit-windows.sh`](./port-claudekit-windows.sh)
 
 ## What It Does
 
@@ -20,6 +23,8 @@ Into these targets:
 - `$HOME/.gemini/antigravity/skills/*`
 - `$HOME/.gemini/antigravity/global_workflows/*`
 - `$HOME/.gemini/GEMINI.md`
+
+The Windows helper can also build a repo-local bundle at `./portable-home-bundle/` with these same scoped assets so another machine can install them without already having Claude.
 
 ## Behavior
 
@@ -57,6 +62,7 @@ From the repo directory:
 ```bash
 bash ./port-claudekit.sh --dry-run
 bash ./port-claudekit.sh --yes
+bash ./port-claudekit-windows.sh --bundle --yes
 ```
 
 Or from anywhere:
@@ -64,6 +70,7 @@ Or from anywhere:
 ```bash
 bash /path/to/port-claudekit.sh --dry-run
 bash /path/to/port-claudekit.sh --yes
+bash /path/to/port-claudekit-windows.sh --install --yes
 ```
 
 Target-specific:
@@ -71,6 +78,18 @@ Target-specific:
 ```bash
 bash ./port-claudekit.sh --dry-run --codex-only
 bash ./port-claudekit.sh --dry-run --gemini-only
+```
+
+Portable bundle flow:
+
+```bash
+# On this machine: snapshot only the same scoped assets the porter uses
+bash ./port-claudekit-windows.sh --bundle --yes
+
+# Copy ./portable-home-bundle/ to the Windows machine
+
+# On Windows via Git Bash: install into $HOME/.claude, $HOME/.codex, and $HOME/.gemini
+bash ./port-claudekit-windows.sh --install --yes
 ```
 
 ## Exit Model
@@ -88,3 +107,15 @@ bash port-claudekit.sh --yes
 ```
 
 and the user gets globally usable Codex and Gemini skills/workflows without editing the script.
+
+For the Windows handoff flow, the intended end state is:
+
+```bash
+bash port-claudekit-windows.sh --bundle --yes
+```
+
+then copy `./portable-home-bundle/` to the other machine and run:
+
+```bash
+bash port-claudekit-windows.sh --install --yes
+```
